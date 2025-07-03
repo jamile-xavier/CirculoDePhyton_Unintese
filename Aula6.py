@@ -41,3 +41,29 @@ while True:
 Altere o programa de cálculo dos números primos, informando, caso o número não
 seja primo, por quais número ele é divisível.
 """
+print("Verificador de número primo")
+
+# Solicita um número inteiro ao usuário
+numero = int(input("Digite um número inteiro maior que 1: "))
+
+# Verificação de número menor que 2
+if numero <= 1:
+    print("Número inválido. Por favor, digite um número maior que 1.")
+else:
+    divisores = []  # Lista para guardar os divisores
+
+    # Verifica todos os números de 2 até (numero - 1)
+    for i in range(2, numero):
+        if numero % i == 0:
+            divisores.append(i)  # Armazena os divisores
+
+    # Verifica se a lista de divisores está vazia
+    if len(divisores) == 0:
+        print(f"{numero} é um número primo.")
+    else:
+        print(f"{numero} NÃO é primo.")
+        print("Ele é divisível por:", end=" ")
+        for d in divisores:
+            print(d, end=" ")
+        print()  # quebra de linha
+
