@@ -58,3 +58,74 @@ Ao encerrar o programa também deve ser informados os códigos e valores do
 cliente mais alto, do mais baixo, do mais pesado e do mais leve, além da média
 das alturas e dos pesos dos clientes.
 """
+
+print("Senso da Academia")
+
+# Variáveis para armazenar os dados iniciais
+mais_alto = 0
+cod_mais_alto = 0
+
+mais_baixo = 999
+cod_mais_baixo = 0
+
+mais_pesado = 0
+cod_mais_pesado = 0
+
+mais_leve = 999
+cod_mais_leve = 0
+
+# Variáveis para calcular médias
+soma_alturas = 0
+soma_pesos = 0
+quantidade_clientes = 0
+
+while True:
+    codigo = int(input("Digite o código do cliente (0 para sair): "))
+    
+    if codigo == 0:
+        break
+
+    altura = float(input("Digite a altura do cliente (em metros, exemplo: 1.75): "))
+    peso = float(input("Digite o peso do cliente (em kg): "))
+    
+    # Atualiza totais
+    soma_alturas += altura
+    soma_pesos += peso
+    quantidade_clientes += 1
+
+    # Verifica o mais alto
+    if altura > mais_alto:
+        mais_alto = altura
+        cod_mais_alto = codigo
+
+    # Verifica o mais baixo
+    if altura < mais_baixo:
+        mais_baixo = altura
+        cod_mais_baixo = codigo
+
+    # Verifica o mais pesado
+    if peso > mais_pesado:
+        mais_pesado = peso
+        cod_mais_pesado = codigo
+
+    # Verifica o mais leve
+    if peso < mais_leve:
+        mais_leve = peso
+        cod_mais_leve = codigo
+
+# Mostra os resultados
+print("\n--- RESULTADOS DO SENSO ---")
+
+if quantidade_clientes > 0:
+    print(f"Cliente mais alto: Código {cod_mais_alto} - Altura: {mais_alto:.2f} m")
+    print(f"Cliente mais baixo: Código {cod_mais_baixo} - Altura: {mais_baixo:.2f} m")
+    print(f"Cliente mais pesado: Código {cod_mais_pesado} - Peso: {mais_pesado:.2f} kg")
+    print(f"Cliente mais leve: Código {cod_mais_leve} - Peso: {mais_leve:.2f} kg")
+
+    media_altura = soma_alturas / quantidade_clientes
+    media_peso = soma_pesos / quantidade_clientes
+
+    print(f"Média das alturas: {media_altura:.2f} m")
+    print(f"Média dos pesos: {media_peso:.2f} kg")
+else:
+    print("Nenhum cliente foi cadastrado.")
